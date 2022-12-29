@@ -12,6 +12,9 @@
     <modules>
         <module>spring-boot-demo-api</module>
         <module>spring-boot-demo-starter</module>
+        <module>spring-boot-demo-service</module>
+        <module>spring-boot-demo-domain</module>
+        <module>spring-boot-demo-repository</module>
     </modules>
 
     <properties>
