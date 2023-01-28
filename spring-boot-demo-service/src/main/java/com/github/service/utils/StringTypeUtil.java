@@ -80,7 +80,7 @@ public class StringTypeUtil {
     }
 
     /**
-     *
+     * spring提供的string操作相关的类方法
      */
     public static void springUtil() {
         org.springframework.util.StringUtils.isEmpty("");
@@ -94,6 +94,9 @@ public class StringTypeUtil {
         org.springframework.util.StringUtils.mergeStringArrays(arr, newArr);
     }
 
+    /**
+     * string原生的方法
+     */
     public static void originStringUtil() {
         String str = "123456%d89qwer%dt%s";
         byte[] bytes = str.getBytes();
@@ -102,6 +105,23 @@ public class StringTypeUtil {
         String format = String.format(str, 123, 456, "hahaha");
         System.out.println(format);
     }
+
+    /**
+     * 其他的方法
+     */
+    public static void otherStringUtil() {
+        //StringBuffer是线程安全的
+        StringBuffer stringBuffer = new StringBuffer();
+        //每次append都是调用System.arrayCopy()方法，即创建新的数组，将原有数据拷贝到新的数组。
+        //System.arraycopy()性能要高于Arrays.copyOf()，Arrays.copyOf()最终也是调用System.arraycopy()
+        stringBuffer.append("1");
+
+        //StringBuilder不是线程安全的
+        //每次append都是调用System.arrayCopy()方法，即创建新的数组，将原有数据拷贝到新的数组。
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("1");
+    }
+
     public static void main(String[] args) {
 //        apacheUtil();
 //        springUtil();
