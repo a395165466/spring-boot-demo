@@ -40,7 +40,7 @@ public class ObjectTypeUtil {
     }
 
     /**
-     * 深拷贝
+     * 通过java IO中的stream实现深拷贝，先写入stream然后从stream中读取
      * @param src
      * @return
      * @param <T>
@@ -80,6 +80,30 @@ public class ObjectTypeUtil {
             }
         }
         return null;
+    }
+
+    /**
+     * 通过Gson(Google提供的工具类)进行深拷贝
+     * @param src
+     * @return
+     * @param <T>
+     */
+    public static <T extends Object> T gsonClone(T src) {
+        String a = "123456";
+//        Gson gson = new Gson();
+//        return T(Gson.fromJson(gson.toJson(src), src.getClass()));
+
+        return null;
+    }
+
+    /**
+     * 通过apache.common.lang3提供的工具类进行深拷贝
+     * @param src
+     * @return
+     * @param <T>
+     */
+    public static <T extends Serializable> T cloneObject(T src) {
+        return SerializationUtils.clone(src);
     }
 
     public static void main(String[] args) {
