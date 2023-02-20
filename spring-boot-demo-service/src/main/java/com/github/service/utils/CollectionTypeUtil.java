@@ -10,6 +10,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import java.util.*;
 
 /**
+ * https://www.liaoxuefeng.com/wiki/1252599548343744/1265102638843296
  * 集合相关的工具类
  */
 public class CollectionTypeUtil {

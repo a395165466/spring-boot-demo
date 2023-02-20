@@ -35,4 +35,14 @@ public class Person implements Serializable {
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("name:").append(name)
+                .append(",age:").append(age)
+                .append(",cardNumber:").append(cardNumber);
+
+        return stringBuilder.toString();
+    }
 }
