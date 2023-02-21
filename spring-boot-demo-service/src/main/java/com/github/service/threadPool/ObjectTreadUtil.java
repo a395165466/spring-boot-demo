@@ -2,7 +2,7 @@ package com.github.service.threadPool;
 
 import java.util.PriorityQueue;
 
-public class ObjectTread {
+public class ObjectTreadUtil {
     private static int queueSize = 5;
     private static PriorityQueue<Integer> queue = new PriorityQueue<>(queueSize);
 
