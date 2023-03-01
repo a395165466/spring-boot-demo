@@ -15,4 +15,8 @@ public class Flow {
     private String name;
 
     private List<Step> stepList;
+
+    public void execute() {
+
+    }
 }
