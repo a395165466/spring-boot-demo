@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://repo.cuner.com/schema/flow"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://repo.cuner.com/schema/flow">
+
+    <xsd:annotation>
+        <xsd:documentation>这是流程引擎的document</xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:element name="flows">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="flow" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="flow">
+        <xsd:complexType>
+            <xsd:sequence maxOccurs="unbounded">
+                <xsd:element ref="step"/>
+            </xsd:sequence>
+            <xsd:attribute name="id" type="xsd:string" use="required">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[ The clean flow name. ]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="step">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[ The step name. ]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+
+            <xsd:attribute name="preCheck" type="xsd:string" >
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[ The preCheck name. 是否有前置节点校验 ]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+
+            <xsd:attribute name="class" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation source="java:java.lang.Class">
+	The fully qualified name of the bean's class, except if it serves only
+	as a parent definition for child bean definitions.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute name="subflow" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[ The sub flow name. ]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

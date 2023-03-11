@@ -10,7 +10,9 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
@@ -22,9 +24,10 @@ public class BpmnXmlFileLoad implements ApplicationContextAware {
 
     private String defaultFileLocation = "";
 
-//    private static String defaultFileLocation = "/Users/zhangguoqing/work/project/spring-boot-demo/spring-boot-demo-service/src/main/java/com/github/service/simpleBPMN";
-
     private static String SUFFIX = "xml";
+
+    private static Map<String, List<Flow>> flowMap = new HashMap<>();
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
@@ -43,6 +46,14 @@ public class BpmnXmlFileLoad implements ApplicationContextAware {
         bpmnXmlParser.parse(fileNameList, applicationContext);
     }
 
+    public List<Flow> getFlowListByFlowName(String flowName) {
+        if (StringUtils.isBlank(flowName)) {
+            return Lists.newArrayList();
+        }
+
+        return flowMap.get(flowName);
+    }
+
     /**
      * 递归获取所有的文件
      * @param directory
@@ -58,16 +69,12 @@ public class BpmnXmlFileLoad implements ApplicationContextAware {
             for (File tempFile : file.listFiles()) {
                 if (tempFile.isDirectory()) {
                     getAllXmlFile(tempFile.getAbsolutePath(), fileList);
-                } else {
-                    if (isXmlFile(tempFile)) {
-                        fileList.add(tempFile);
-                    }
+                } else if (isXmlFile(tempFile)){
+                    fileList.add(tempFile);
                 }
             }
-        } else {
-            if (isXmlFile(file)) {
-                fileList.add(file);
-            }
+        } else if (isXmlFile(file)) {
+            fileList.add(file);
         }
     }
 
