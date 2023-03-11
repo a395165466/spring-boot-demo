@@ -55,8 +55,9 @@ public class BpmnXmlParser {
             Element rootElement = document.getRootElement();
             String rootName = rootElement.getName();
 
-            System.out.println(rootName);
+            System.out.println("解析xml文件" + rootName);
         } catch (DocumentException e) {
+            // TODO: 2023/3/11 记录错误日志 
             throw new RuntimeException(e);
         }
 

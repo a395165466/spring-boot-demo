@@ -24,6 +24,10 @@ public class BpmnXmlFileLoad implements ApplicationContextAware {
 
     private String defaultFileLocation = "";
 
+    private String START_MODULE = "spring-boot-demo-starter";
+
+    private String SERVICE_MODULE = "spring-boot-demo-service";
+
     private static String SUFFIX = "xml";
 
     private static Map<String, List<Flow>> flowMap = new HashMap<>();
@@ -31,8 +35,8 @@ public class BpmnXmlFileLoad implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
-        defaultFileLocation = this.getClass().getResource("").getPath();
-
+        String classPath = BpmnXmlFileLoad.class.getResource("/").getPath();
+        defaultFileLocation = classPath.replace(START_MODULE, SERVICE_MODULE);
         //获取到文件列表
         List<File> fileList = Lists.newArrayList();
         getAllXmlFile(defaultFileLocation, fileList);
