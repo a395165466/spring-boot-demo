@@ -8,17 +8,17 @@ import java.util.List;
 
 @Component
 public class Engine {
-    @Autowired
-    private BpmnXmlFileLoad bpmnXmlFileLoad;
+//    @Autowired
+//    private BpmnXmlFileLoad bpmnXmlFileLoad;
 
     public void start(String bpmnFlow) {
         if (StringUtils.isBlank(bpmnFlow)) {
             throw new RuntimeException("bpmn flow is empty");
         }
 
-        List<Flow> flowList = bpmnXmlFileLoad.getFlowListByFlowName("");
-        for (Flow flow : flowList) {
+//        List<Flow> flowList = bpmnXmlFileLoad.getFlowListByFlowName("");
+//        for (Flow flow : flowList) {
 //            flow.execute();
-        }
+//        }
     }
 }

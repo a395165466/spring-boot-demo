@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:flowable="http://flowable.org/bpmn"
+             typeLanguage="http://www.w3.org/2001/XMLSchema"
+             expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.flowable.org/processdef">
+  <process id="audit" name="audit Request" isExecutable="true">
+    <startEvent id="startEvent"/>
+    <sequenceFlow sourceRef="startEvent" targetRef="approveTask"/>
+    <userTask id="approveTask" name="Approve or reject request" flowable:candidateGroups="managers"/>
+    <sequenceFlow sourceRef="approveTask" targetRef="decision"/>
+    <exclusiveGateway id="decision"/>
+    <sequenceFlow sourceRef="decision" targetRef="externalSystemCall">
+      <conditionExpression xsi:type="tFormalExpression">this is formal express</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow  sourceRef="decision" targetRef="sendRejectionMail">
+      <conditionExpression xsi:type="tFormalExpression">this is the express</conditionExpression>
+    </sequenceFlow>
+    <serviceTask id="externalSystemCall" name="Enter holidays in external system"
+                 flowable:class="com.flowable.flowabledemo.CallExternalSystemDelegate"/>
+    <sequenceFlow sourceRef="externalSystemCall" targetRef="holidayApprovedTask"/>
+    <userTask id="holidayApprovedTask" name="Holiday approved" flowable:assignee="${employee}"/>
+    <sequenceFlow sourceRef="holidayApprovedTask" targetRef="approveEnd"/>
+    <serviceTask id="sendRejectionMail" name="Send out rejection email"
+                 flowable:class="com.flowable.flowabledemo.SendRejectionMail"/>
+    <!--这里的class需要注意，后边跟的路径是你项目类问价所在的相对位置，若运行的时候报错，需要来修改这里的位置代码-->
+    <sequenceFlow sourceRef="sendRejectionMail" targetRef="rejectEnd"/>
+    <endEvent id="approveEnd"/>
+    <endEvent id="rejectEnd"/>
+  </process>
+</definitions>

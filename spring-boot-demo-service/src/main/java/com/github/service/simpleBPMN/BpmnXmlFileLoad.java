@@ -35,6 +35,7 @@ public class BpmnXmlFileLoad implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
+        // TODO: 2023/3/11 1.考虑要能解析所有module里的问题 2.考虑要解析bpmn文件，而不是xml文件，不然会会有很多
         String classPath = BpmnXmlFileLoad.class.getResource("/").getPath();
         defaultFileLocation = classPath.replace(START_MODULE, SERVICE_MODULE);
         //获取到文件列表
@@ -95,16 +96,16 @@ public class BpmnXmlFileLoad implements ApplicationContextAware {
         return SUFFIX.equals(fileName.substring(index + 1));
     }
 
-    public static void main(String[] args) {
-
-//        System.out.println(ClassLoader.getSystemResource(""));
-//        System.out.println(this.getClass().getResource());
-
-        String fileName = "step.java";
-        int index = fileName.lastIndexOf(".");
-//        if (index == -1) {
-//            return false;
-//        }
-        System.out.println(fileName.substring(index + 1));
-    }
+//    public static void main(String[] args) {
+//
+////        System.out.println(ClassLoader.getSystemResource(""));
+////        System.out.println(this.getClass().getResource());
+//
+//        String fileName = "step.java";
+//        int index = fileName.lastIndexOf(".");
+////        if (index == -1) {
+////            return false;
+////        }
+//        System.out.println(fileName.substring(index + 1));
+//    }
 }
