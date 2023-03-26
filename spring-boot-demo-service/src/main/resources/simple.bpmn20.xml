@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions>
+  <process id="my-process">
+    <startEvent id="start"/>
+    <sequenceFlow id="flow1" sourceRef="start" targetRef="someTask" />
+    <userTask id="someTask" name="Activiti is awesome!" />
+    <sequenceFlow id="flow2" sourceRef="someTask" targetRef="end" />
+    <endEvent id="end"/>
+  </process>
+</definitions>
