@@ -9,24 +9,20 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>spring-boot-demo-starter</artifactId>
+    <artifactId>spring-boot-demo-controller</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.github.zhangguqing</groupId>
             <artifactId>spring-boot-demo-service</artifactId>
             <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.zhangguqing</groupId>
-            <artifactId>spring-boot-demo-controller</artifactId>
-            <version>1.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
+
 </project>

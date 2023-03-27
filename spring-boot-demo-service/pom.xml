@@ -35,7 +35,12 @@
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
         </dependency>
-<!--        <dependency>-->
+        <dependency>
+            <groupId>com.github.zhangguqing</groupId>
+            <artifactId>spring-boot-demo-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <!--        <dependency>-->
 <!--            <groupId>org.flowable</groupId>-->
 <!--            <artifactId>flowable-engine</artifactId>-->
 <!--        </dependency>-->
