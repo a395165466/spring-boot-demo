@@ -20,11 +20,6 @@
     <dependencies>
         <dependency>
             <groupId>com.github.zhangguqing</groupId>
-            <artifactId>spring-boot-demo-service</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.zhangguqing</groupId>
             <artifactId>spring-boot-demo-controller</artifactId>
             <version>1.0</version>
         </dependency>
