@@ -118,8 +118,8 @@ public class CompletableFutureUtil {
         }
     }
 
-    public static void main(String[] args) {
-//        test();
-        test1();
-    }
+//    public static void main(String[] args) {
+////        test();
+//        test1();
+//    }
 }

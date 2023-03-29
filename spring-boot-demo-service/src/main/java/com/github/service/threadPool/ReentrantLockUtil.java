@@ -67,11 +67,11 @@ public class ReentrantLockUtil {
         }
     }
 
-    public static void main(String[] args) {
-        Thread producer = new Thread(new ProduceTask());
-        Thread consumer = new Thread(new ConsumeTask());
-
-        producer.start();
-        consumer.start();
-    }
+//    public static void main(String[] args) {
+//        Thread producer = new Thread(new ProduceTask());
+//        Thread consumer = new Thread(new ConsumeTask());
+//
+//        producer.start();
+//        consumer.start();
+//    }
 }

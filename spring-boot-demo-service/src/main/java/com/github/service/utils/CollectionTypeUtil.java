@@ -80,8 +80,8 @@ public class CollectionTypeUtil {
         pair.getKey(); pair.getValue();
         //
     }
-    public static void main(String[] args) {
-//        execute();
-        execute1();
-    }
+//    public static void main(String[] args) {
+////        execute();
+//        execute1();
+//    }
 }

@@ -51,20 +51,20 @@ public class ThreadPoolDemo {
         }
     }
 
-    public static void main(String[] args) {
-        //Runnable
-//        test1();
-        //Callable
-//        test2();
-        //周期性任务
-//        test3();
-        //延迟任务
-//        test4();
-        //延迟周期任务
-//        test5();
-        //Callable批量任务
-        test6();
-    }
+//    public static void main(String[] args) {
+//        //Runnable
+////        test1();
+//        //Callable
+////        test2();
+//        //周期性任务
+////        test3();
+//        //延迟任务
+////        test4();
+//        //延迟周期任务
+////        test5();
+//        //Callable批量任务
+//        test6();
+//    }
     private static void test1() {
         for (int i = 0; i <= 10; i++) {
             RunTask runTask = new RunTask(String.valueOf(i));

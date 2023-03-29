@@ -41,16 +41,16 @@ public class GenericUtil {
     public static void tes3(List<?> list) {
 
     }
-    public static void main(String[] args) {
-        test(Lists.newArrayList());
-
-        List<Student> students = new ArrayList<>();
-        List<Worker> workers = new ArrayList<>();
-
-        test1(students);
-        test1(workers);
-
-        test2(students);
-        test2(workers);
-    }
+//    public static void main(String[] args) {
+//        test(Lists.newArrayList());
+//
+//        List<Student> students = new ArrayList<>();
+//        List<Worker> workers = new ArrayList<>();
+//
+//        test1(students);
+//        test1(workers);
+//
+//        test2(students);
+//        test2(workers);
+//    }
 }

@@ -54,11 +54,11 @@ public class ObjectTreadUtil {
         }
     }
 
-    public static void main(String[] args) {
-        Thread produceTask = new Thread(new ProduceTask());
-        Thread consumeTask = new Thread(new ConsumeTask());
-
-        produceTask.start();
-        consumeTask.start();
-    }
+//    public static void main(String[] args) {
+//        Thread produceTask = new Thread(new ProduceTask());
+//        Thread consumeTask = new Thread(new ConsumeTask());
+//
+//        produceTask.start();
+//        consumeTask.start();
+//    }
 }

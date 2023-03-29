@@ -90,8 +90,8 @@ public class CommonUtil {
         Field[] fields = FieldUtils.getAllFields(Student.class);
     }
 
-    public static void main(String[] args) {
-//        commonUtil();
-        execute();
-    }
+//    public static void main(String[] args) {
+////        commonUtil();
+//        execute();
+//    }
 }

@@ -124,9 +124,9 @@ public class StringTypeUtil {
         stringBuilder.append("1");
     }
 
-    public static void main(String[] args) {
-//        apacheUtil();
-//        springUtil();
-        originStringUtil();
-    }
+//    public static void main(String[] args) {
+////        apacheUtil();
+////        springUtil();
+//        originStringUtil();
+//    }
 }

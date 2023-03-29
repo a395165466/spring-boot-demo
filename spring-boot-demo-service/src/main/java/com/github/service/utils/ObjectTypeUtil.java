@@ -106,12 +106,12 @@ public class ObjectTypeUtil {
         return SerializationUtils.clone(src);
     }
 
-    public static void main(String[] args) {
-//        springObjectUtil();
-//        originObjectUtil();
-
-        String a = "123456";
-        String b = deepClone(a);
-        System.out.println(b);
-    }
+//    public static void main(String[] args) {
+////        springObjectUtil();
+////        originObjectUtil();
+//
+//        String a = "123456";
+//        String b = deepClone(a);
+//        System.out.println(b);
+//    }
 }
