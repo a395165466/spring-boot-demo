@@ -7,23 +7,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
-@RequestMapping("/demo/test")
+@RequestMapping("/demo")
 public class TestController extends BaseController {
     @Resource
     private CommonService commonService;
 
     @PostMapping( "/add")
-    public String add(String addStr) {
-        System.out.println("input is " + addStr);
-        return null;
+    public String add(HttpServletRequest request, HttpServletResponse response) {
+        String orderId = request.getParameter("orderId");
+        System.out.println("input is:" + orderId);
+        return orderId;
     }
 
     @GetMapping("/query")
-    public List<String> query(String assignee) {
-        System.out.println("query" + assignee);
+    public HttpServletResponse query(HttpServletRequest request, HttpServletResponse response) {
+        String orderId = request.getParameter("orderId");
+        System.out.println("query is:" + orderId);
+
+        commonService.query(orderId);
         return null;
     }
 }

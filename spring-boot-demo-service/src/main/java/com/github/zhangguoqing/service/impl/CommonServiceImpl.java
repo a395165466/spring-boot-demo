@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 public class CommonServiceImpl implements CommonService {
     @Override
     public String query(String param) {
+        System.out.println("this is service");
         return null;
     }
 }
