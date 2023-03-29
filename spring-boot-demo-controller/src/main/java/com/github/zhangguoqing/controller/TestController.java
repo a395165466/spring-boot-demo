@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
-@RequestMapping("/demo")
+@RequestMapping("/test")
 public class TestController extends BaseController {
     @Resource
     private CommonService commonService;
@@ -30,6 +30,24 @@ public class TestController extends BaseController {
         System.out.println("query is:" + orderId);
 
         commonService.query(orderId);
+        return null;
+    }
+
+    @GetMapping("/startFlow")
+    public HttpServletResponse startFlow(HttpServletRequest request, HttpServletResponse response) {
+        String orderId = request.getParameter("orderId");
+        System.out.println("query is:" + orderId);
+
+        commonService.startFlow();
+        return null;
+    }
+
+    @GetMapping("/deploy")
+    public HttpServletResponse deploy(HttpServletRequest request, HttpServletResponse response) {
+        String orderId = request.getParameter("orderId");
+        System.out.println("query is:" + orderId);
+
+        commonService.deploy();
         return null;
     }
 }
