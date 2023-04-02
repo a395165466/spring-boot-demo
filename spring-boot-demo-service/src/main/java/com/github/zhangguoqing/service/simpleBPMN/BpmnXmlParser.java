@@ -1,5 +1,8 @@
 package com.github.zhangguoqing.service.simpleBPMN;
 
+import com.github.zhangguoqing.service.simpleBPMN.converter.BaseBpmnConverter;
+import com.github.zhangguoqing.service.simpleBPMN.model.BpmnParseModel;
+import com.github.zhangguoqing.service.simpleBPMN.model.element.ProcessElement;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.apache.commons.collections4.CollectionUtils;
@@ -19,6 +22,11 @@ import java.util.Objects;
  */
 @Component
 public class BpmnXmlParser {
+    /**
+     * converterMap
+     */
+    private Map<String, BaseBpmnConverter> converterMap;
+
     public Map<String, Flow> parse(List<String> files, ApplicationContext applicationContext) {
         Map<String, Flow> flowMap = Maps.newHashMap();
         if (CollectionUtils.isEmpty(files)) {
@@ -41,6 +49,8 @@ public class BpmnXmlParser {
     }
 
     public List<FlowDefinition> parseFileByXml(String fileName) {
+        BpmnParseModel model = new BpmnParseModel();
+        ProcessElement processElement = new ProcessElement();
         List<FlowDefinition> flowDefinitions = Lists.newArrayList();
 
         File file = new File(fileName);
@@ -53,13 +63,22 @@ public class BpmnXmlParser {
                     String localName = reader.getLocalName();
                     System.out.printf("%s\t\t\t", localName);
 
-                    int attCount = reader.getAttributeCount() ;
-                    for (int i = 0; i < attCount; i++) {
-                        System.out.printf("%s:%s\t",
-                                reader.getAttributeName(i),
-                                reader.getAttributeValue(i));
+                    if ("definitions".equals(localName)) {
+
+                    } else if ("process".equals(localName)) {
+
+                    } else if (converterMap.containsKey(localName)) {
+                        //Process里面包含的元素
+                        BaseBpmnConverter converter = converterMap.get(localName);
+                        converter.converter(reader, model, processElement);
                     }
-                    System.out.println("\n");
+//                    int attCount = reader.getAttributeCount() ;
+//                    for (int i = 0; i < attCount; i++) {
+//                        System.out.printf("%s:%s\t",
+//                                reader.getAttributeName(i),
+//                                reader.getAttributeValue(i));
+//                    }
+//                    System.out.println("\n");
                 }
             }
         } catch (FileNotFoundException e) {

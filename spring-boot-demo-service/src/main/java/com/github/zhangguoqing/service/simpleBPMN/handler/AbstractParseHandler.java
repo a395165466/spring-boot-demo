@@ -1,6 +1,6 @@
 package com.github.zhangguoqing.service.simpleBPMN.handler;
 
-import com.github.zhangguoqing.service.simpleBPMN.model.BaseElement;
+import com.github.zhangguoqing.service.simpleBPMN.model.element.BaseElement;
 
 public abstract class AbstractParseHandler<T extends BaseElement> implements ParseHandler<T> {
     @Override

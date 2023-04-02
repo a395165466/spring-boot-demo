@@ -1,8 +1,7 @@
 package com.github.zhangguoqing.service.simpleBPMN.handler;
 
-import com.github.zhangguoqing.service.simpleBPMN.model.BaseElement;
-import com.github.zhangguoqing.service.simpleBPMN.model.FlowItemElement;
-import com.github.zhangguoqing.service.simpleBPMN.model.ServiceTaskElement;
+import com.github.zhangguoqing.service.simpleBPMN.model.element.BaseElement;
+import com.github.zhangguoqing.service.simpleBPMN.model.element.ServiceTaskElement;
 
 public class ServiceTaskParseHandler extends AbstractParseHandler<ServiceTaskElement> {
     @Override

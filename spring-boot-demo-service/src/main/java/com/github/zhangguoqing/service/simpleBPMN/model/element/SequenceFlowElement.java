@@ -1,4 +1,4 @@
-package com.github.zhangguoqing.service.simpleBPMN.model;
+package com.github.zhangguoqing.service.simpleBPMN.model.element;
 
 import lombok.Getter;
 import lombok.Setter;
