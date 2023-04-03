@@ -1,11 +1,14 @@
 package com.github.zhangguoqing.service.simpleBPMN;
 
 import com.github.zhangguoqing.service.simpleBPMN.converter.BaseBpmnConverter;
+import com.github.zhangguoqing.service.simpleBPMN.converter.DefinitionsBpmnConverter;
+import com.github.zhangguoqing.service.simpleBPMN.converter.ProcessBpmnConverter;
 import com.github.zhangguoqing.service.simpleBPMN.model.BpmnParseModel;
 import com.github.zhangguoqing.service.simpleBPMN.model.element.ProcessElement;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +29,12 @@ public class BpmnXmlParser {
      * converterMap
      */
     private Map<String, BaseBpmnConverter> converterMap;
+
+    @Autowired
+    private DefinitionsBpmnConverter definitionsBpmnConverter;
+
+    @Autowired
+    private ProcessBpmnConverter processBpmnConverter;
 
     public Map<String, Flow> parse(List<String> files, ApplicationContext applicationContext) {
         Map<String, Flow> flowMap = Maps.newHashMap();
@@ -50,7 +59,7 @@ public class BpmnXmlParser {
 
     public List<FlowDefinition> parseFileByXml(String fileName) {
         BpmnParseModel model = new BpmnParseModel();
-        ProcessElement processElement = new ProcessElement();
+        ProcessElement process = new ProcessElement();
         List<FlowDefinition> flowDefinitions = Lists.newArrayList();
 
         File file = new File(fileName);
@@ -64,13 +73,13 @@ public class BpmnXmlParser {
                     System.out.printf("%s\t\t\t", localName);
 
                     if ("definitions".equals(localName)) {
-
+                        definitionsBpmnConverter.converter(reader, model, process);
                     } else if ("process".equals(localName)) {
-
+                        processBpmnConverter.converter(reader, model, process);
                     } else if (converterMap.containsKey(localName)) {
                         //Process里面包含的元素
                         BaseBpmnConverter converter = converterMap.get(localName);
-                        converter.converter(reader, model, processElement);
+                        converter.converter(reader, model, process);
                     }
 //                    int attCount = reader.getAttributeCount() ;
 //                    for (int i = 0; i < attCount; i++) {

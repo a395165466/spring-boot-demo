@@ -1,5 +1,6 @@
 package com.github.zhangguoqing.service.simpleBPMN.model.element;
 
+import com.google.common.collect.Lists;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,5 +12,5 @@ public class ProcessElement extends BaseElement {
     /**
      * 在Process中包含的流程节点集合
      */
-    List<FlowItemElement> flowItemElements;
+    List<FlowItemElement> flowItemElements = Lists.newArrayList();
 }
