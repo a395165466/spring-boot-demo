@@ -7,4 +7,6 @@ import javax.xml.stream.XMLStreamReader;
 
 public interface BaseBpmnConverter {
     void converter(XMLStreamReader xtr, BpmnParseModel model, ProcessElement processElement);
+
+    String getElementType();
 }

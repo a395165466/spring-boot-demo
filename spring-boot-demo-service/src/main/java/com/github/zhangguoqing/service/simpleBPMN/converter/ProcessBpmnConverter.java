@@ -20,4 +20,9 @@ public class ProcessBpmnConverter implements BaseBpmnConverter {
 
         model.setProcessElementList(Lists.newArrayList(processElement));
     }
+
+    @Override
+    public String getElementType() {
+        return ProcessBpmnConverter.class.getName();
+    }
 }

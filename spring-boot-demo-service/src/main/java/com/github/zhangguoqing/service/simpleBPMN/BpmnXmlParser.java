@@ -28,7 +28,7 @@ public class BpmnXmlParser {
     /**
      * converterMap
      */
-    private Map<String, BaseBpmnConverter> converterMap;
+    private Map<String, BaseBpmnConverter> converterMap = Maps.newHashMap();
 
     @Autowired
     private DefinitionsBpmnConverter definitionsBpmnConverter;
@@ -155,5 +155,13 @@ public class BpmnXmlParser {
 //        }
 //
 //        return flowDefinitions;
+    }
+
+    /**
+     * 将所有的converter保存到内存中
+     */
+    public void addBpmnConverterMap() {
+        DefinitionsBpmnConverter definitionsBpmnConverter = new DefinitionsBpmnConverter();
+        converterMap.put(DefinitionsBpmnConverter.class.getName(), new DefinitionsBpmnConverter());
     }
 }

@@ -23,4 +23,9 @@ public class DefinitionsBpmnConverter implements BaseBpmnConverter {
 
         model.setDefinitionElement(definitionsElement);
     }
+
+    @Override
+    public String getElementType() {
+        return DefinitionsBpmnConverter.class.getName();
+    }
 }

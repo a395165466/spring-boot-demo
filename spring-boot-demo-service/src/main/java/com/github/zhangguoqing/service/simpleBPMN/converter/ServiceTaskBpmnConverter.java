@@ -21,4 +21,9 @@ public class ServiceTaskBpmnConverter implements BaseBpmnConverter{
 
         processElement.getFlowItemElements().add(element);
     }
+
+    @Override
+    public String getElementType() {
+        return ServiceTaskBpmnConverter.class.getName();
+    }
 }

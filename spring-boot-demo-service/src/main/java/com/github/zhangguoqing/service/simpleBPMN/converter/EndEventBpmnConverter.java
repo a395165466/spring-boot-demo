@@ -20,4 +20,9 @@ public class EndEventBpmnConverter implements BaseBpmnConverter {
 
         processElement.getFlowItemElements().add(endEventElement);
     }
+
+    @Override
+    public String getElementType() {
+        return EndEventBpmnConverter.class.getName();
+    }
 }

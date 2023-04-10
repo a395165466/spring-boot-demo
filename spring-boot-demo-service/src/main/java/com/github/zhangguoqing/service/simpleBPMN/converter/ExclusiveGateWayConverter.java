@@ -21,4 +21,9 @@ public class ExclusiveGateWayConverter implements BaseBpmnConverter {
 
         processElement.getFlowItemElements().add(element);
     }
+
+    @Override
+    public String getElementType() {
+        return ExclusiveGateWayConverter.class.getName();
+    }
 }

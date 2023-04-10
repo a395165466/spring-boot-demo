@@ -23,4 +23,9 @@ public class StartEventBpmnConverter implements BaseBpmnConverter {
 
         processElement.getFlowItemElements().add(startEventElement);
     }
+
+    @Override
+    public String getElementType() {
+        return StartEventBpmnConverter.class.getName();
+    }
 }
