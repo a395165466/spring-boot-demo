@@ -48,7 +48,7 @@ public class BpmnXmlFileLoad implements ApplicationContextAware {
         for (String s : fileNameList) {
             System.out.println(s);
         }
-        bpmnXmlParser.parse(fileNameList, applicationContext);
+        Map<String, Flow> flowMap = bpmnXmlParser.parse(fileNameList, applicationContext);
     }
 
     public List<Flow> getFlowListByFlowName(String flowName) {
