@@ -1,8 +1,7 @@
 package com.github.zhangguoqing.service.simpleBPMN;
 
-import com.github.zhangguoqing.service.simpleBPMN.converter.BaseBpmnConverter;
-import com.github.zhangguoqing.service.simpleBPMN.converter.DefinitionsBpmnConverter;
-import com.github.zhangguoqing.service.simpleBPMN.converter.ProcessBpmnConverter;
+import com.github.zhangguoqing.service.flowEngine.BusInventoryProcessor;
+import com.github.zhangguoqing.service.simpleBPMN.converter.*;
 import com.github.zhangguoqing.service.simpleBPMN.model.BpmnParseModel;
 import com.github.zhangguoqing.service.simpleBPMN.model.element.ProcessElement;
 import com.google.common.collect.Lists;
@@ -41,6 +40,10 @@ public class BpmnXmlParser {
         if (CollectionUtils.isEmpty(files)) {
             return flowMap;
         }
+
+        //获取所有的converter
+        addBpmnConverter2MapByReflection(applicationContext);
+
         //解析xml文件为FlowDefinition列表
         List<FlowDefinition> flowDefinitions = Lists.newArrayList();
         for (String file : files) {
@@ -81,13 +84,6 @@ public class BpmnXmlParser {
                         BaseBpmnConverter converter = converterMap.get(localName);
                         converter.converter(reader, model, process);
                     }
-//                    int attCount = reader.getAttributeCount() ;
-//                    for (int i = 0; i < attCount; i++) {
-//                        System.out.printf("%s:%s\t",
-//                                reader.getAttributeName(i),
-//                                reader.getAttributeValue(i));
-//                    }
-//                    System.out.println("\n");
                 }
             }
         } catch (FileNotFoundException e) {
@@ -160,8 +156,24 @@ public class BpmnXmlParser {
     /**
      * 将所有的converter保存到内存中
      */
-    public void addBpmnConverterMap() {
-        DefinitionsBpmnConverter definitionsBpmnConverter = new DefinitionsBpmnConverter();
+    public void addBpmnConverter2Map() {
         converterMap.put(DefinitionsBpmnConverter.class.getName(), new DefinitionsBpmnConverter());
+        converterMap.put(EndEventBpmnConverter.class.getName(), new EndEventBpmnConverter());
+        converterMap.put(StartEventBpmnConverter.class.getName(), new StartEventBpmnConverter());
+        converterMap.put(SequenceBpmnConverter.class.getName(), new SequenceBpmnConverter());
+        converterMap.put(ServiceTaskBpmnConverter.class.getName(), new ServiceTaskBpmnConverter());
+        converterMap.put(ProcessBpmnConverter.class.getName(), new ProcessBpmnConverter());
+        converterMap.put(ExclusiveGateWayConverter.class.getName(), new ExclusiveGateWayConverter());
+    }
+
+    /**
+     * 通过applicationContext获取到所有的bean
+     * @param applicationContext
+     */
+    public void addBpmnConverter2MapByReflection(ApplicationContext applicationContext) {
+        Map<String, BaseBpmnConverter> map = applicationContext.getBeansOfType(BaseBpmnConverter.class);
+        for (Map.Entry<String, BaseBpmnConverter> entry : map.entrySet()) {
+            converterMap.put(entry.getValue().getClass().getName(), entry.getValue());
+        }
     }
 }
