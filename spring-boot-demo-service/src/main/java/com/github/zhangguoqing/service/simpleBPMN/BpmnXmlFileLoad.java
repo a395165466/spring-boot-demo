@@ -1,5 +1,6 @@
 package com.github.zhangguoqing.service.simpleBPMN;
 
+import com.github.zhangguoqing.service.simpleBPMN.model.BpmnParseModel;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -48,7 +49,7 @@ public class BpmnXmlFileLoad implements ApplicationContextAware {
         for (String s : fileNameList) {
             System.out.println(s);
         }
-        Map<String, Flow> flowMap = bpmnXmlParser.parse(fileNameList, applicationContext);
+        Map<String, BpmnParseModel> modelMap = bpmnXmlParser.parse(fileNameList, applicationContext);
     }
 
     public List<Flow> getFlowListByFlowName(String flowName) {
