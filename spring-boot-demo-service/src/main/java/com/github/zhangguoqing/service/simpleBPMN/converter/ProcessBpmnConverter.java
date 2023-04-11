@@ -5,6 +5,7 @@ import com.github.zhangguoqing.service.simpleBPMN.model.element.ProcessElement;
 import com.google.common.collect.Lists;
 import org.springframework.stereotype.Component;
 
+import javax.naming.Name;
 import javax.xml.stream.XMLStreamReader;
 import java.util.ArrayList;
 
@@ -18,6 +19,8 @@ public class ProcessBpmnConverter implements BaseBpmnConverter {
         processElement.setId(id);
         processElement.setName(name);
 
+        model.setId(id);
+        model.setName(name);
         model.setProcessElementList(Lists.newArrayList(processElement));
     }
 

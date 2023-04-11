@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class BpmnParseModel {
+public class BpmnParseModel extends BpmnBaseModel {
 
     private DefinitionsElement definitionElement;
 

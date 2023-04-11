@@ -3,6 +3,7 @@ package com.github.zhangguoqing.service.simpleBPMN;
 import com.github.zhangguoqing.service.flowEngine.BusInventoryProcessor;
 import com.github.zhangguoqing.service.simpleBPMN.converter.*;
 import com.github.zhangguoqing.service.simpleBPMN.model.BpmnParseModel;
+import com.github.zhangguoqing.service.simpleBPMN.model.element.BpmnModel;
 import com.github.zhangguoqing.service.simpleBPMN.model.element.ProcessElement;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -35,35 +36,28 @@ public class BpmnXmlParser {
     @Autowired
     private ProcessBpmnConverter processBpmnConverter;
 
-    public Map<String, Flow> parse(List<String> files, ApplicationContext applicationContext) {
-        Map<String, Flow> flowMap = Maps.newHashMap();
+    public Map<String, BpmnParseModel> parse(List<String> files, ApplicationContext applicationContext) {
+        Map<String, BpmnParseModel> modelMap = Maps.newHashMap();
         if (CollectionUtils.isEmpty(files)) {
-            return flowMap;
+            return modelMap;
         }
-
         //获取所有的converter
         addBpmnConverter2MapByReflection(applicationContext);
 
         //解析xml文件为FlowDefinition列表
-        List<FlowDefinition> flowDefinitions = Lists.newArrayList();
+        List<BpmnParseModel> bpmnParseModels = Lists.newArrayList();
         for (String file : files) {
-            flowDefinitions.addAll(parseFileByXml(file));
+            bpmnParseModels.add(parseFileByXml(file));
         }
-        for (FlowDefinition flowDefinition : flowDefinitions) {
-            Flow flow = (Flow)flowDefinition.getInstance();
-            //判断是否有重复的flowId
-            if (Objects.nonNull(flowMap.get(flow.getId()))) {
-                throw new RuntimeException("duplicate flowId: " + flow.getId());
-            }
-            flowMap.put(flow.getId(), flow);
+        for (BpmnParseModel bpmnParseModel : bpmnParseModels) {
+            modelMap.put(bpmnParseModel.getId(), bpmnParseModel);
         }
-        return flowMap;
+        return modelMap;
     }
 
-    public List<FlowDefinition> parseFileByXml(String fileName) {
+    public BpmnParseModel parseFileByXml(String fileName) {
         BpmnParseModel model = new BpmnParseModel();
         ProcessElement process = new ProcessElement();
-        List<FlowDefinition> flowDefinitions = Lists.newArrayList();
 
         File file = new File(fileName);
         XMLInputFactory xmlFactory  = XMLInputFactory.newInstance();
@@ -92,7 +86,7 @@ public class BpmnXmlParser {
             throw new RuntimeException(e);
         }
 
-        return flowDefinitions;
+        return model;
     }
     public List<FlowDefinition> parseFile(String fileName) {
         return null;
