@@ -31,7 +31,7 @@ public class BpmnXmlFileLoad implements ApplicationContextAware {
 
     private static String SUFFIX = "xml";
 
-    private static Map<String, List<Flow>> flowMap = new HashMap<>();
+    private static Map<String, BpmnParseModel> modelMap = new HashMap<>();
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -49,7 +49,7 @@ public class BpmnXmlFileLoad implements ApplicationContextAware {
         for (String s : fileNameList) {
             System.out.println(s);
         }
-        Map<String, BpmnParseModel> modelMap = bpmnXmlParser.parse(fileNameList, applicationContext);
+        this.modelMap = bpmnXmlParser.parse(fileNameList, applicationContext);
     }
 
     public List<Flow> getFlowListByFlowName(String flowName) {
@@ -57,7 +57,8 @@ public class BpmnXmlFileLoad implements ApplicationContextAware {
             return Lists.newArrayList();
         }
 
-        return flowMap.get(flowName);
+//        return flowMap.get(flowName);
+        return null;
     }
 
     /**
