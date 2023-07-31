@@ -98,16 +98,16 @@ public class BpmnXmlFileLoad implements ApplicationContextAware {
         return SUFFIX.equals(fileName.substring(index + 1));
     }
 
-//    public static void main(String[] args) {
-//
-////        System.out.println(ClassLoader.getSystemResource(""));
-////        System.out.println(this.getClass().getResource());
-//
-//        String fileName = "step.java";
-//        int index = fileName.lastIndexOf(".");
-////        if (index == -1) {
-////            return false;
-////        }
-//        System.out.println(fileName.substring(index + 1));
-//    }
+    public static void main(String[] args) {
+        int dp[][] = new int[5][5];
+        System.out.println(dp.toString());
+
+        String a = "12345";
+        a.toCharArray();
+        int[] nums = new int[5];
+
+
+        List<String> stringList = Lists.newArrayList();
+        List<Integer> list = Lists.newArrayList();
+    }
 }
