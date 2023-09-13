@@ -9,6 +9,8 @@ import javax.xml.stream.XMLStreamReader;
 
 @Component
 public class SequenceBpmnConverter implements BaseBpmnConverter {
+    public static final String ELEMENT_TYPE = "sequenceFlow";
+
     @Override
     public void converter(XMLStreamReader xtr, BpmnParseModel model, ProcessElement processElement) {
         SequenceFlowElement element = new SequenceFlowElement();
@@ -24,6 +26,6 @@ public class SequenceBpmnConverter implements BaseBpmnConverter {
 
     @Override
     public String getElementType() {
-        return SequenceBpmnConverter.class.getName();
+        return ELEMENT_TYPE;
     }
 }

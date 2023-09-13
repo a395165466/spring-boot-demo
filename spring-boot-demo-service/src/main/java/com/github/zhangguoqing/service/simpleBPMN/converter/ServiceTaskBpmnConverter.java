@@ -8,7 +8,9 @@ import org.springframework.stereotype.Component;
 import javax.xml.stream.XMLStreamReader;
 
 @Component
-public class ServiceTaskBpmnConverter implements BaseBpmnConverter{
+public class ServiceTaskBpmnConverter implements BaseBpmnConverter {
+    public static final String ELEMENT_TYPE = "serviceTask";
+
     @Override
     public void converter(XMLStreamReader xtr, BpmnParseModel model, ProcessElement processElement) {
         ServiceTaskElement element = new ServiceTaskElement();
@@ -24,6 +26,6 @@ public class ServiceTaskBpmnConverter implements BaseBpmnConverter{
 
     @Override
     public String getElementType() {
-        return ServiceTaskBpmnConverter.class.getName();
+        return ELEMENT_TYPE;
     }
 }

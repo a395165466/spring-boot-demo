@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 @Component
 public class ProcessBpmnConverter implements BaseBpmnConverter {
+    public static final String ELEMENT_TYPE = "process";
+
     @Override
     public void converter(XMLStreamReader xtr, BpmnParseModel model, ProcessElement processElement) {
         String id = xtr.getAttributeValue(null, "id");
@@ -26,6 +28,6 @@ public class ProcessBpmnConverter implements BaseBpmnConverter {
 
     @Override
     public String getElementType() {
-        return ProcessBpmnConverter.class.getName();
+        return ELEMENT_TYPE;
     }
 }

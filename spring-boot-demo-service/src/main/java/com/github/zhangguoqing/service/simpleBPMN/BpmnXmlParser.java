@@ -67,7 +67,7 @@ public class BpmnXmlParser {
             while(reader.hasNext()){
                 if (reader.next() == XMLStreamReader.START_ELEMENT) {
                     String localName = reader.getLocalName();
-                    System.out.printf("%s\t\t\t", localName);
+                    System.out.printf("%s\n", localName);
 
                     if ("definitions".equals(localName)) {
                         definitionsBpmnConverter.converter(reader, model, process);
@@ -151,13 +151,13 @@ public class BpmnXmlParser {
      * 将所有的converter保存到内存中
      */
     public void addBpmnConverter2Map() {
-        converterMap.put(DefinitionsBpmnConverter.class.getName(), new DefinitionsBpmnConverter());
-        converterMap.put(EndEventBpmnConverter.class.getName(), new EndEventBpmnConverter());
-        converterMap.put(StartEventBpmnConverter.class.getName(), new StartEventBpmnConverter());
-        converterMap.put(SequenceBpmnConverter.class.getName(), new SequenceBpmnConverter());
-        converterMap.put(ServiceTaskBpmnConverter.class.getName(), new ServiceTaskBpmnConverter());
-        converterMap.put(ProcessBpmnConverter.class.getName(), new ProcessBpmnConverter());
-        converterMap.put(ExclusiveGateWayConverter.class.getName(), new ExclusiveGateWayConverter());
+        converterMap.put(DefinitionsBpmnConverter.ELEMENT_TYPE, new DefinitionsBpmnConverter());
+        converterMap.put(EndEventBpmnConverter.ELEMENT_TYPE, new EndEventBpmnConverter());
+        converterMap.put(StartEventBpmnConverter.ELEMENT_TYPE, new StartEventBpmnConverter());
+        converterMap.put(SequenceBpmnConverter.ELEMENT_TYPE, new SequenceBpmnConverter());
+        converterMap.put(ServiceTaskBpmnConverter.ELEMENT_TYPE, new ServiceTaskBpmnConverter());
+        converterMap.put(ProcessBpmnConverter.ELEMENT_TYPE, new ProcessBpmnConverter());
+        converterMap.put(ExclusiveGateWayConverter.ELEMENT_TYPE, new ExclusiveGateWayConverter());
     }
 
     /**

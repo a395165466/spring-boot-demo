@@ -58,7 +58,7 @@ public class CommonServiceImpl implements CommonService {
     @Override
     public void deploy() {
         String classPath = BpmnXmlFileLoad.class.getResource("/").getPath();
-        String fileLocation = classPath.replace(START_MODULE, SERVICE_MODULE) + "simple.bpmn20.xml";
+        String fileLocation = classPath.replace(START_MODULE, SERVICE_MODULE) + "simple.bpmn20.xml.bak";
         InputStream inputStream = null;
         try {
             inputStream = new FileInputStream(new File(fileLocation));
@@ -66,7 +66,7 @@ public class CommonServiceImpl implements CommonService {
             throw new RuntimeException(e);
         }
         DeploymentBuilder deploymentBuilder = repositoryService.createDeployment();
-        deploymentBuilder.addInputStream("simple.bpmn20.xml", inputStream);
+        deploymentBuilder.addInputStream("simple.bpmn20.xml.bak", inputStream);
         deploymentBuilder.deploy();
     }
 }

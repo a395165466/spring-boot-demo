@@ -14,6 +14,8 @@ import java.util.stream.IntStream;
 
 @Component
 public class EndEventBpmnConverter implements BaseBpmnConverter {
+    public static final String ELEMENT_TYPE = "endEvent";
+
     @Override
     public void converter(XMLStreamReader xtr, BpmnParseModel model, ProcessElement processElement) {
         String id = xtr.getAttributeValue(null, "id");
@@ -45,6 +47,6 @@ public class EndEventBpmnConverter implements BaseBpmnConverter {
 
     @Override
     public String getElementType() {
-        return EndEventBpmnConverter.class.getName();
+        return ELEMENT_TYPE;
     }
 }

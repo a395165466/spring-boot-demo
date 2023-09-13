@@ -9,6 +9,8 @@ import javax.xml.stream.XMLStreamReader;
 
 @Component
 public class DefinitionsBpmnConverter implements BaseBpmnConverter {
+    public static final String ELEMENT_TYPE = "definitions";
+
     @Override
     public void converter(XMLStreamReader xtr, BpmnParseModel model, ProcessElement processElement) {
         String name = xtr.getLocalName();
@@ -26,6 +28,6 @@ public class DefinitionsBpmnConverter implements BaseBpmnConverter {
 
     @Override
     public String getElementType() {
-        return DefinitionsBpmnConverter.class.getName();
+        return ELEMENT_TYPE;
     }
 }

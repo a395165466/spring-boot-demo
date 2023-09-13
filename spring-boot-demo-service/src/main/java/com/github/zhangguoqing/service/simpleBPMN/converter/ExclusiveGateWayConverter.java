@@ -9,6 +9,8 @@ import javax.xml.stream.XMLStreamReader;
 
 @Component
 public class ExclusiveGateWayConverter implements BaseBpmnConverter {
+    public static final String ELEMENT_TYPE = "process";
+
     @Override
     public void converter(XMLStreamReader xtr, BpmnParseModel model, ProcessElement processElement) {
         ExclusiveGatewayElement element = new ExclusiveGatewayElement();
@@ -24,6 +26,6 @@ public class ExclusiveGateWayConverter implements BaseBpmnConverter {
 
     @Override
     public String getElementType() {
-        return ExclusiveGateWayConverter.class.getName();
+        return ELEMENT_TYPE;
     }
 }

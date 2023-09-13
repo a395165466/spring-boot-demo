@@ -21,7 +21,7 @@ public class MyWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter
                 .anyRequest().authenticated()
                 .and()
                 // 没有权限进入内置的登录页面
-                .formLogin()
+                .openidLogin()
                 .and()
                 // 暂时关闭CSRF校验，允许get请求登出
                 .csrf().disable();
