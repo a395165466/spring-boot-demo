@@ -3,6 +3,7 @@ package com.github.zhangguoqing.service.simpleBPMN.converter;
 import com.github.zhangguoqing.service.simpleBPMN.model.BpmnParseModel;
 import com.github.zhangguoqing.service.simpleBPMN.model.element.FlowItemElement;
 import com.github.zhangguoqing.service.simpleBPMN.model.element.ProcessElement;
+import com.github.zhangguoqing.service.simpleBPMN.model.element.StartEventElement;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +20,7 @@ public class StartEventBpmnConverter implements BaseBpmnConverter {
         String id = xtr.getAttributeValue(null, "id");
         String name = xtr.getAttributeValue(null, "name");
 
-        FlowItemElement startEventElement = new FlowItemElement();
+        StartEventElement startEventElement = new StartEventElement();
         startEventElement.setId(id);
         startEventElement.setName(name);
 

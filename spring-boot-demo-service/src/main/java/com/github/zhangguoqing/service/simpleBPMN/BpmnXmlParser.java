@@ -167,7 +167,7 @@ public class BpmnXmlParser {
     public void addBpmnConverter2MapByReflection(ApplicationContext applicationContext) {
         Map<String, BaseBpmnConverter> map = applicationContext.getBeansOfType(BaseBpmnConverter.class);
         for (Map.Entry<String, BaseBpmnConverter> entry : map.entrySet()) {
-            converterMap.put(entry.getValue().getClass().getName(), entry.getValue());
+            converterMap.put(entry.getValue().getElementType(), entry.getValue());
         }
     }
 }
