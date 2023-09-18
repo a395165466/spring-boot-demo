@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class test {
+public class StaticH5Log {
 
     private static Map<String, Set<String>> urlMap = new HashMap<>();
     /**
